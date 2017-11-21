@@ -3,7 +3,7 @@
         options: {
             flexstyle: "app-bar-menu", //app-bar-menu | YOUR_OWN class for the pull flexmenu, basic support for "sidebar2" are integrated in the appbar.less file
             flexclean: false,           //true | false. if set all entries except the no-flexible ones will removed
-            flextolerance: 3               //in px. if set the freespace is runnig out a little bit earlier, so floats
+            flextolerance: 3               //in px. if set the freespace is runnig out a little bit earlier, so floats 
                                         //and not no-wrap elements have no chance to wrap. help for rounding errors also
         },
         _create: function () {
@@ -66,7 +66,7 @@
             childrenRightFloated.reverse();
 
             //=== build up the new children jquery object ===
-            //join the left, right and normal children
+            //join the left, right and normal children   
             children = new Array();
             children = childrenLeftFloated.concat(childrenAsUsual, childrenRightFloated);
 
@@ -78,7 +78,7 @@
             //adds the left margin dedicated to the first child
             childrenWidth += parseInt($(children).first().css("margin-left"));
 
-            //walk trough the children and add the size,
+            //walk trough the children and add the size, 
             for (var i = 0, len = children.length - 1; i <= len; i++) {
                 childrenWidth += $(children[i]).outerWidth();
                 if (i !== len) {
@@ -108,7 +108,7 @@
                 var flexChildren = $(menu).children().filter(function () {
                     return parseInt($(this).attr("data-flexorderorigin")) < parseInt($(child).attr("data-flexorderorigin"));
                 });
-
+                
                 if (flexChildren.length > 0) {
                     //because we are greater, we set it after the childern which are lower
                     $(flexChildren).last().after(child);
@@ -235,7 +235,7 @@
                         //nothing left to hide
                         break;
                     } else {
-                        //we moved successfully, perhaps we can hide more entries, we recheck the appbar,
+                        //we moved successfully, perhaps we can hide more entries, we recheck the appbar, 
                         //remember, we are in a endless loop, which checks this for us
 
                         if (!forceEndLoop) {
@@ -311,7 +311,7 @@
                         //give  all menuEntries a flexorder which have not one and save the original order
                         $(menuEntries).each(function () {
                             $(this).attr("data-flexorderorigin", $(this).index());
-
+                            
                             if(!($(this).is("[data-flexorder]"))) {
                                 $(this).attr("data-flexorder", $(this).index() + 1);
                             }
@@ -323,7 +323,7 @@
                             return aValue - bValue;
                         });
 
-                        //data-flexdirection="reverse" support
+                        //data-flexdirection="reverse" support 
                         if ($(flexVisible).is("[data-flexdirection='reverse']")) {
                             menuEntries.reverse();
                         }
@@ -349,16 +349,16 @@
                     that.flexVisibles.each(function () {
                         $(that.pullMenu).append($('<ul class="app-bar-pullmenubar hidden ' + o.flexstyle + '" />'));
                     });
-
-
-
+                    
+                    
+                    
                     // WORKAROUND: this is because a :after:before clearfix for the pullmenu do not work for some reason
                     //position: absolute does not work if we do not break the float. another pure css solution should be written in the appbar.less
                     //after that remove this line
                     $(that.menusParent).append($('<div class="clearfix" style="width: 0;">'));
                     //-----------
-
-
+                    
+                    
                     $(that.pullMenu).addClass("flexstyle-" + o.flexstyle);
 
                     $(that.menusParent).append(that.pullMenu);
@@ -381,8 +381,6 @@
                             $(that.pullMenu).show();
                             $(that.pullMenu).find(".app-bar-pullmenubar")
                                     .hide().not(".hidden").slideDown("fast");
-                            e.preventDefault();
-                            e.stopPropagation();
                         } else {
                             $(that.pullMenu).find(".app-bar-pullmenubar")
                                     .not(".hidden").show().slideUp("fast", function () {
