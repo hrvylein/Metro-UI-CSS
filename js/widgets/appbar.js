@@ -381,8 +381,6 @@
                             $(that.pullMenu).show();
                             $(that.pullMenu).find(".app-bar-pullmenubar")
                                     .hide().not(".hidden").slideDown("fast");
-                            e.preventDefault();
-                            e.stopPropagation();
                         } else {
                             $(that.pullMenu).find(".app-bar-pullmenubar")
                                     .not(".hidden").show().slideUp("fast", function () {
